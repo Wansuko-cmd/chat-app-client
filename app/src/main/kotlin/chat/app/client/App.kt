@@ -17,7 +17,7 @@ import io.ktor.client.statement.*
 import io.ktor.http.*
 import kotlinx.coroutines.runBlocking
 
-val url = Env.URL.value
+var url = Env.URL.value
 
 fun main() = runBlocking{
 
@@ -29,8 +29,13 @@ fun main() = runBlocking{
         }
     }
 
+    print("URL: ")
+    readLine().also {
+        if(!it.isNullOrBlank()) url = it
+    }
+
     print("User name: ")
-    val userName = readLine()!!
+    val userName = readLine() ?: ""
 
     println("Start")
 
